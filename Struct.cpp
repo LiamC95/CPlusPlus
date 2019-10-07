@@ -1,6 +1,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <ostream>
 
 using namespace std;
 
@@ -43,21 +44,33 @@ void displayFruit(fruitType fruit)
     cout << "Sugars\t:"<< fruit.sugar << endl;
 }
 
-//? 3.	Write a program that reads students’ names followed by their test scores. The program should output each student’s name followed by the test scores and the relevant grade. It should also find and print the highest test score and the name of the students having the highest test score.
-struct student
-{
-    string  name;
-    int     caGrade;
-    int     testGrade;
-    float   average;
-};
+/*
 
+?   3.	Write a program that reads students’ names followed by their test scores. 
+?   The program should output each student’s name followed by the test scores and the relevant grade.
+?   It should also find and print the highest test score and the name of the students having the highest test score.
+?
+?   Student data should be stored in a struct variable of type studentType,
+?   which has four components: studentFName and studentLName of type string, testScore of type int
+?   (testScore is between 0 and 100), and grade of type char. Suppose that the class has 20 students.
+?   Use a vector (or list) of 20 components of type studentType. 
+?
+?       Your program must contain at least the following functions:
+?  i.	A function to read the students’ data from a file into the vector.
+?  ii.	A function to assign the relevant grade to each student.
+?  iii.	A function to find the highest test score.
+?  iv.	A function to print the names of the students having the highest test score.
 
+? Your program must output each student’s name in this form: last name followed by a comma, followed by a space,
+? followed by the first name; the name must be left justified. Moreover,
+? other than declaring the variables and opening the input and output files, the function main should only be a collection of function calls.
+
+*/
 
 
 int main()
 {
-    fruitType newFruit = getFruit();
-    displayFruit(newFruit);
+   
+
     return 0;
 }
