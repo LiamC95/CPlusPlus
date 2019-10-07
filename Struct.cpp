@@ -1,7 +1,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
-#include <ostream>
+#include <vector>
 
 using namespace std;
 
@@ -66,6 +66,46 @@ void displayFruit(fruitType fruit)
 ? other than declaring the variables and opening the input and output files, the function main should only be a collection of function calls.
 
 */
+struct student
+{
+    /* data */
+    string Fname;
+    string Lname;
+    int     testScore;
+    char    grade;
+
+    friend istream& operator >>(istream& in, student& s);
+    friend ostream& operator >>(ostream& out, student s);
+
+};
+
+
+void setGrade(student& s)
+{
+    
+    if(s.testScore < 40)
+    {
+        s.grade = 'e';
+    }else if(s.testScore < 55)
+    {
+        s.grade = 'd';
+    }
+    else if(s.testScore <  65)
+    {
+        s.grade = 'c';
+    }
+    else if(s.testScore < 75)
+    {
+        s.grade = 'b';
+    }
+    else
+    {
+        s.grade = 'a';
+    }
+}
+
+
+
 
 
 int main()
