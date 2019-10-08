@@ -78,7 +78,20 @@ struct student
     friend ostream& operator >>(ostream& out, student s);
 
 };
+ostream& operator<<(ostream& out,const student& s)
+{
+    out << s.Lname << ", " << s.Fname << ": " << s.testScore << ", " << s.grade << endl;
+    return out;
 
+}
+
+istream& operator>>(istream& in, student& s)
+{
+    in >> s.Fname;
+    in >> s.Lname;
+    in >> s.testScore;
+    return in; 
+}
 
 void setGrade(student& s)
 {
@@ -107,10 +120,34 @@ void setGrade(student& s)
 
 
 
-
 int main()
 {
-   
+   vector<student> groupA;
+   ifstream in("student.txt");
+
+   if(in)
+   {
+       while(!in.eof())
+       {
+           student s;
+           in >> s;
+           setGrade(s);
+           groupA.push_back(s);
+       }
+        in.close();
+    }
+    else
+    {
+        cout << "File Doesnt Exist!" << endl;
+    
+    }
+    
+    for(student s: groupA)
+    {
+        cout << s;
+    }
+
+
 
     return 0;
 }
