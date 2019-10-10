@@ -116,38 +116,119 @@ void setGrade(student& s)
         s.grade = 'a';
     }
 }
+vector<student> getStudents()
+{
+    vector<student> groupA;
+
+    //* just hard coded in text file.
+    ifstream in("student.txt");
+
+    if(in)
+    {
+        while(!in.eof())
+        {
+            student s;
+            in >> s;
+            setGrade(s);
+            groupA.push_back(s);
+        }
+            in.close();
+        }
+        else
+        {
+            cout << "File Doesnt Exist!" << endl;
+        
+        }
+        
+        
+
+        return groupA;
+}
+student highestGrade(vector<student> group)
+{
+    int maxGrade =0;
+    student bestStudent; 
+    for(student s:  group)
+    {
+        if(s.testScore > maxGrade)
+        {
+            maxGrade = s.testScore;
+            bestStudent = s;
+
+        }
+    }
+
+    return bestStudent;
+}
+
+
+
+
+struct charCount{
+    char char1;
+    int count;
+};
+
+void openFile(ifstream& in, ofstream& out)
+{
+    cout << "Enter file name: " << endl;
+    string filename;
+    getline(cin, filename);
+    in.open(filename);
+    if(!in)
+    {
+        cout << "Error opening file" << endl;
+        
+    }
+    cout << "Enter Destination" << endl;
+    string destName;
+    getline(cin, destName);
+    out.open(destName);
+
+}
+
+void count(vector<charCount> &items, ifstream& in)
+{
+    char c;
+    bool found = false;
+    do
+    {
+        for(charCount &cc: items)
+        {
+            if(cc.char1 == c)
+            {
+                found = true;
+                cc.count++;
+            }
+        }
+        if(!found)
+        {
+            charCount cc;
+            cc.char1 = c;
+            cc.count = 1;
+            items.push_back(cc);
+        }
+    } while (!in.eof());
+    
+}
+
 
 
 
 
 int main()
 {
-   vector<student> groupA;
-   ifstream in("student.txt");
+   
+    vector<student> groupA = getStudents();
 
-   if(in)
-   {
-       while(!in.eof())
-       {
-           student s;
-           in >> s;
-           setGrade(s);
-           groupA.push_back(s);
-       }
-        in.close();
-    }
-    else
-    {
-        cout << "File Doesnt Exist!" << endl;
-    
-    }
-    
     for(student s: groupA)
-    {
-        cout << s;
-    }
+        {
+            cout << s;
+        }
 
+    cout << "\n\nTop Student" << highestGrade(groupA) << endl;
 
+    
 
     return 0;
 }
