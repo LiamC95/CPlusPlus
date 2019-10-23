@@ -266,12 +266,12 @@ bool areSameReverse(const list<int>& a, const list<int>& b)
 {
 
     list<int>::iterator iterA = a.begin();
-    list<int>::iterator iterB = b.end() -1;
+    list<int>::iterator iterB = b.end()--;
 
     //? This line creates a if statement where if a is larger than b max size is a.size or vice versa
     list<int>::size_type max = a.size() > b.size() ? a.size() : b.size();
     
-    for(list<int>::size_type i = 0; i<max)
+    for(list<int>::size_type i = 0; i<max;)
     {
         if(*iterA == *iterB)
         {

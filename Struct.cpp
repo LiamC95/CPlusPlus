@@ -5,7 +5,8 @@
 
 using namespace std;
 
-//? 2.	Write a program that declares a variable of type fruitType, prompts the user to input data about a fruit, and outputs the fruit data.
+//? 2.	Write a program that declares a variable of type fruitType,
+//?     prompts the user to input data about a fruit, and outputs the fruit data.
 struct fruitType
 {
     string Fruitname;
