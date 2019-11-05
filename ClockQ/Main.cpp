@@ -1,10 +1,11 @@
 #include "Clock.h"
+#include "extClock.h"
 #include <iostream>
 
 int main()
 {
     Clock clock1(12,3,12);
-    Clock clock2(12,23,55);
+    extClock clock2(12,23,55,"GMT");
 
     cout << clock1.getHours() << endl;
 
@@ -19,5 +20,7 @@ int main()
 
 
     cout << "Difference Between clock one and two: "<< clock1.timeDifference(clock2) << endl;
+
+    cout << clock2.getTimezone() << endl;
     return 0;
 }
