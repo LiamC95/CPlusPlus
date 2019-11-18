@@ -1,4 +1,6 @@
 #include "Shape.h"
+#include "Rectangle.h"
+#include "Circle.h"
 #include <iostream>
 #include <string>
 #include <map>
