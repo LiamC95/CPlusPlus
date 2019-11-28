@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <map>
+#include <set>
 #include <functional>
 #include <fstream>
 
@@ -12,14 +13,14 @@ using namespace std;
 typedef function <void(void)> funct;
 void question1();
 void question2();
-void question3();
+void question6();
 
 int main()
 {
     map<int, funct>questions;
     questions[1] = question1;
     questions[2] = question2;
-    questions[3] = question3;
+    questions[6] = question6;
     int choice =0;
 
     do{
@@ -103,7 +104,7 @@ void question2()
             stuPtr[i] = ans[i];
         }
         int stuMark = mark(corrPtr, stuPtr);
-        cout stuMark;
+        cout << stuMark ;
             
         }
     }
@@ -113,7 +114,24 @@ void question2()
     }
 }
 
-void question4()
+void question6()
 {
-
+    set<string> words;
+    ifstream in("/../../textFiles/student.txt");
+    if(in)
+    {
+        string word;
+        while(!in.eof())
+        {
+            in >> word;
+            words.insert(word);
+        }
+        for(set<string>::iterator iter = words.begin();
+            iter != words.end();
+            iter++
+            )
+            {
+                cout << *iter << endl;
+            }
+    }
 }

@@ -13,5 +13,5 @@ class Circle: public Shape
     void setRadius(double radius);
 
     ~Circle();
-}
+};
 

@@ -3,15 +3,15 @@
 
 class Rectangle : public Shape
 {
-    int perimeter
+    double perimeter;
     public:
     Rectangle();
     Rectangle(string color, string description, int x, int y, int perimeter);
 
-    int getPerimeter();
+    double getPerimeter();
 
     void setPerimeter();
 
 
     ~Rectangle();
-}
+};

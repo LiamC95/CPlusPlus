@@ -7,7 +7,7 @@ Rectangle::Rectangle(string color, string description, int x, int y, int perimet
     setPerimeter();
 }
 
-int Rectangle::getPerimeter(){
+double Rectangle::getPerimeter(){
     return this->perimeter;
 }
 
