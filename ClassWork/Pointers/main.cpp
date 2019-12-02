@@ -1,12 +1,15 @@
 #include "Shape.h"
 #include "Rectangle.h"
 #include "Circle.h"
+#include "./headers/Stack.h"
 #include <iostream>
 #include <string>
 #include <map>
 #include <set>
 #include <functional>
 #include <fstream>
+#include <queue>
+#include <list>
 
 using namespace std;
 
@@ -14,13 +17,24 @@ typedef function <void(void)> funct;
 void question1();
 void question2();
 void question6();
+void question7();
+void question9();
+
+struct customer{
+    int arrival, seen, departure;
+};
+
 
 int main()
 {
+
+
     map<int, funct>questions;
     questions[1] = question1;
     questions[2] = question2;
     questions[6] = question6;
+    questions[7] = question7;
+    questions[9] = question9;
     int choice =0;
 
     do{
@@ -134,4 +148,108 @@ void question6()
                 cout << *iter << endl;
             }
     }
+}
+
+// To simulate a barber shops wait times
+void question7()
+{
+    queue <customer> waitingQueue;
+    list<customer> fincustomers;
+    bool b1busy = false;
+    bool b2busy = false;
+    int b1idle, b2idle = 0;
+    customer b1cust;
+    customer b2cust;
+
+    for(int min = 1; min < 540; min++)
+    {
+        if(min > 180 && min < 360)
+        {
+            if(min % 5 == 0)
+            {
+                customer c;
+                c.arrival = min;
+                waitingQueue.push(c);
+            }
+        }
+        else{
+            if(min % 15 == 0)
+            {
+                customer c;
+                c.arrival = min;
+                waitingQueue.push(c);
+            }
+
+            if(!b1busy && waitingQueue.size()>1)
+            {
+                b1cust = waitingQueue.front();
+                waitingQueue.pop();
+                b1cust.seen = min;
+                b1busy = true;
+            }
+            else if(b1busy && (min - b1cust.seen)==10)
+            {
+                b1busy = false;
+                b1cust.departure = min;
+                fincustomers.push_back(b1cust);
+            }
+            else if(!b2busy && waitingQueue.size()>1)
+            {
+                b2cust = waitingQueue.front();
+                waitingQueue.pop();
+                b2cust.seen = min;
+                b2busy = true;
+            }
+            else if(b2busy && (min - b2cust.seen)==20)
+            {
+                b2busy = false;
+                b2cust.departure = min;
+                fincustomers.push_back(b2cust);
+            }
+            else if(!b1busy)
+            {
+                b1idle++;
+            }
+            else if(!b2busy)
+            {
+                b2idle++;
+            }
+
+        
+        }
+    }
+        int total = 0;
+        for(customer c: fincustomers)
+        {
+            int wait = c.seen - c.arrival;
+            total += wait; 
+            
+        }
+        cout << "Ammount of customers = "<< fincustomers.size() << endl;
+        cout << "Barber idles - (b1: " << b1idle << ") (b2: " << b2idle << ")" <<  endl;
+        cout << "Average Wait time = " << total/fincustomers.size() << endl;
+}
+
+void question9()
+{
+    MyStack pt(3);
+
+	pt.push(1);
+	pt.push(2);
+
+	pt.pop();
+	pt.pop();
+
+	pt.push(3);
+
+	cout << "Top element is: " << pt.peek() << endl;
+	cout << "Stack size is " << pt.size() << endl;
+
+	pt.pop();
+
+	if (pt.isEmpty())
+		cout << "Stack Is Empty\n";
+	else
+		cout << "Stack Is Not Empty\n";
+
 }
