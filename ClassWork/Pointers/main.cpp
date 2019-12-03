@@ -1,6 +1,5 @@
-#include "Shape.h"
-#include "Rectangle.h"
-#include "Circle.h"
+
+#include "./headers/Fraction.h"
 #include "./headers/Stack.h"
 #include <iostream>
 #include <string>
@@ -19,6 +18,7 @@ void question2();
 void question6();
 void question7();
 void question9();
+void question10();
 
 struct customer{
     int arrival, seen, departure;
@@ -35,6 +35,7 @@ int main()
     questions[6] = question6;
     questions[7] = question7;
     questions[9] = question9;
+    questions[10]   = question10;
     int choice =0;
 
     do{
@@ -252,4 +253,12 @@ void question9()
 	else
 		cout << "Stack Is Not Empty\n";
 
+}
+
+void question10()
+{
+    Fraction f1;
+    Fraction f2;
+
+    cout << f1 << f1 << endl;
 }
