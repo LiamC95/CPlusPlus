@@ -1,5 +1,6 @@
 #include "./headers/Fraction.h"
 #include "./headers/MyArray.h"
+#include "./headers/Entry.h"
 #include <iostream>
 
 
@@ -7,6 +8,7 @@ using namespace std;
 
 void question1();
 void question2();
+void question3();
 
 template<typename T>
 void swap(T* array, int i, int j)
@@ -35,16 +37,8 @@ void sort(T* data, int size)
 
 int main()
 {
-    int arr[] = {1,2,4,5,2,3,5,73,2,9};
     
-    sort(arr, 10);
-
-    for(int i = 0; i < 10 ; i++)
-    {
-        cout << arr[i] << ",";
-    }
-    cout << endl;
-
+    question3();
     //question2();
     return 0;
 }
@@ -72,4 +66,12 @@ void question2()
     {
         cout << i << " - " << arr1[i] << endl;
     }
+}
+void question3(){
+    
+    int x = 2;
+    string y = "HI";
+    Entry<int, string> one(x, y);
+
+    cout << one;
 }

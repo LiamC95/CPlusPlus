@@ -1,6 +1,7 @@
 
 #include "./headers/Fraction.h"
 #include "./headers/Stack.h"
+#include "./headers/Entry.h"
 #include <iostream>
 #include <string>
 #include <map>
